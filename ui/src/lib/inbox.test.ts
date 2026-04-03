@@ -256,18 +256,7 @@ const dashboard: DashboardSummary = {
     blocked: 0,
     done: 0,
   },
-  costs: {
-    monthSpendCents: 900,
-    monthBudgetCents: 1000,
-    monthUtilizationPercent: 90,
-  },
   pendingApprovals: 1,
-  budgets: {
-    activeIncidents: 0,
-    pendingApprovals: 0,
-    pausedAgents: 0,
-    pausedProjects: 0,
-  },
 };
 
 describe("inbox helpers", () => {
@@ -290,12 +279,12 @@ describe("inbox helpers", () => {
     });
 
     expect(result).toEqual({
-      inbox: 6,
+      inbox: 5,
       approvals: 1,
       failedRuns: 2,
       joinRequests: 1,
       mineIssues: 1,
-      alerts: 1,
+      alerts: 0,
     });
   });
 

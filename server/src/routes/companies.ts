@@ -17,7 +17,7 @@ import { validate } from "../middleware/validate.js";
 import {
   accessService,
   agentService,
-  budgetService,
+
   companyPortabilityService,
   companyService,
   feedbackService,
@@ -32,7 +32,7 @@ export function companyRoutes(db: Db, storage?: StorageService) {
   const agents = agentService(db);
   const portability = companyPortabilityService(db, storage);
   const access = accessService(db);
-  const budgets = budgetService(db);
+
   const feedback = feedbackService(db);
 
   function parseBooleanQuery(value: unknown) {
@@ -273,18 +273,7 @@ export function companyRoutes(db: Db, storage?: StorageService) {
       entityId: company.id,
       details: { name: company.name },
     });
-    if (company.budgetMonthlyCents > 0) {
-      await budgets.upsertPolicy(
-        company.id,
-        {
-          scopeType: "company",
-          scopeId: company.id,
-          amount: company.budgetMonthlyCents,
-          windowKind: "calendar_month_utc",
-        },
-        req.actor.userId ?? "board",
-      );
-    }
+
     res.status(201).json(company);
   });
 

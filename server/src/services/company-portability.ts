@@ -1703,7 +1703,6 @@ const YAML_KEY_PRIORITY = [
   "adapter",
   "runtime",
   "permissions",
-  "budgetMonthlyCents",
   "metadata",
 ] as const;
 
@@ -2402,10 +2401,6 @@ function buildManifestFromPackageFiles(
       adapterConfig,
       runtimeConfig,
       permissions: extensionPermissions ?? {},
-      budgetMonthlyCents:
-        typeof extension.budgetMonthlyCents === "number" && Number.isFinite(extension.budgetMonthlyCents)
-          ? Math.max(0, Math.floor(extension.budgetMonthlyCents))
-          : 0,
       metadata: extensionMetadata,
     });
 
@@ -3129,7 +3124,6 @@ export function companyPortabilityService(db: Db, storage?: StorageService) {
           },
           runtime: portableRuntimeConfig,
           permissions: portablePermissions,
-          budgetMonthlyCents: (agent.budgetMonthlyCents ?? 0) > 0 ? agent.budgetMonthlyCents : undefined,
           metadata: (agent.metadata as Record<string, unknown> | null) ?? null,
         });
         if (isPlainRecord(extension) && agentEnvInputs.length > 0) {
@@ -3980,7 +3974,6 @@ export function companyPortabilityService(db: Db, storage?: StorageService) {
           adapterType: effectiveAdapterType,
           adapterConfig: adapterConfigWithSkills,
           runtimeConfig: disableImportedTimerHeartbeat(manifestAgent.runtimeConfig),
-          budgetMonthlyCents: manifestAgent.budgetMonthlyCents,
           permissions: manifestAgent.permissions,
           metadata: manifestAgent.metadata,
         };

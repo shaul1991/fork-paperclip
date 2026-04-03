@@ -8,7 +8,6 @@ const feedbackDataSharingTermsVersionSchema = z.string().min(1).nullable().optio
 export const createCompanySchema = z.object({
   name: z.string().min(1),
   description: z.string().optional().nullable(),
-  budgetMonthlyCents: z.number().int().nonnegative().optional().default(0),
 });
 
 export type CreateCompany = z.infer<typeof createCompanySchema>;
@@ -17,7 +16,6 @@ export const updateCompanySchema = createCompanySchema
   .partial()
   .extend({
     status: z.enum(COMPANY_STATUSES).optional(),
-    spentMonthlyCents: z.number().int().nonnegative().optional(),
     requireBoardApprovalForNewAgents: z.boolean().optional(),
     feedbackDataSharingEnabled: z.boolean().optional(),
     feedbackDataSharingConsentAt: z.coerce.date().nullable().optional(),

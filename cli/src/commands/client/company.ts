@@ -1095,8 +1095,6 @@ export function registerCompanyCommands(program: Command): void {
             id: row.id,
             name: row.name,
             status: row.status,
-            budgetMonthlyCents: row.budgetMonthlyCents,
-            spentMonthlyCents: row.spentMonthlyCents,
             requireBoardApprovalForNewAgents: row.requireBoardApprovalForNewAgents,
           }));
           for (const row of formatted) {

@@ -12,8 +12,6 @@ function makeCompany(overrides: Partial<Company>): Company {
     pausedAt: null,
     issuePrefix: "ALP",
     issueCounter: 1,
-    budgetMonthlyCents: 0,
-    spentMonthlyCents: 0,
     requireBoardApprovalForNewAgents: false,
     feedbackDataSharingEnabled: false,
     feedbackDataSharingConsentAt: null,

@@ -55,9 +55,6 @@ const mockApprovalService = vi.hoisted(() => ({
   getById: vi.fn(),
 }));
 
-const mockBudgetService = vi.hoisted(() => ({
-  upsertPolicy: vi.fn(),
-}));
 
 const mockHeartbeatService = vi.hoisted(() => ({
   listTaskSessions: vi.fn(),
@@ -93,7 +90,7 @@ vi.mock("../services/index.js", () => ({
   accessService: () => mockAccessService,
   approvalService: () => mockApprovalService,
   companySkillService: () => mockCompanySkillService,
-  budgetService: () => mockBudgetService,
+
   heartbeatService: () => mockHeartbeatService,
   issueApprovalService: () => mockIssueApprovalService,
   issueService: () => mockIssueService,
@@ -154,7 +151,7 @@ describe("agent permission routes", () => {
     mockAccessService.setPrincipalPermission.mockResolvedValue(undefined);
     mockCompanySkillService.listRuntimeSkillEntries.mockResolvedValue([]);
     mockCompanySkillService.resolveRequestedSkillKeys.mockImplementation(async (_companyId, requested) => requested);
-    mockBudgetService.upsertPolicy.mockResolvedValue(undefined);
+
     mockAgentInstructionsService.materializeManagedBundle.mockImplementation(
       async (agent: Record<string, unknown>, files: Record<string, string>) => ({
         bundle: null,

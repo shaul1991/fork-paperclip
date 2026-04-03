@@ -71,8 +71,6 @@ describe("CommentThread", () => {
       adapterType: "process",
       adapterConfig: {},
       runtimeConfig: {},
-      budgetMonthlyCents: 0,
-      spentMonthlyCents: 0,
       pauseReason: null,
       pausedAt: null,
       permissions: { canCreateAgents: false },

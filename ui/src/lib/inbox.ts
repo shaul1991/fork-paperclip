@@ -364,17 +364,11 @@ export function computeInboxBadgeData({
   ).length;
   const visibleMineIssues = mineIssues.length;
   const agentErrorCount = dashboard?.agents.error ?? 0;
-  const monthBudgetCents = dashboard?.costs.monthBudgetCents ?? 0;
-  const monthUtilizationPercent = dashboard?.costs.monthUtilizationPercent ?? 0;
   const showAggregateAgentError =
     agentErrorCount > 0 &&
     failedRuns === 0 &&
     !dismissed.has("alert:agent-errors");
-  const showBudgetAlert =
-    monthBudgetCents > 0 &&
-    monthUtilizationPercent >= 80 &&
-    !dismissed.has("alert:budget");
-  const alerts = Number(showAggregateAgentError) + Number(showBudgetAlert);
+  const alerts = Number(showAggregateAgentError);
 
   return {
     inbox: actionableApprovals + visibleJoinRequests + failedRuns + visibleMineIssues + alerts,

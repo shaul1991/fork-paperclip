@@ -22,9 +22,6 @@ const mockAccessService = vi.hoisted(() => ({
   ensureMembership: vi.fn(),
 }));
 
-const mockBudgetService = vi.hoisted(() => ({
-  upsertPolicy: vi.fn(),
-}));
 
 const mockCompanyPortabilityService = vi.hoisted(() => ({
   exportBundle: vi.fn(),
@@ -44,7 +41,7 @@ const mockFeedbackService = vi.hoisted(() => ({
 vi.mock("../services/index.js", () => ({
   accessService: () => mockAccessService,
   agentService: () => mockAgentService,
-  budgetService: () => mockBudgetService,
+
   companyPortabilityService: () => mockCompanyPortabilityService,
   companyService: () => mockCompanyService,
   feedbackService: () => mockFeedbackService,

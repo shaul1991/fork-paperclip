@@ -34,7 +34,7 @@ import {
   accessService,
   approvalService,
   companySkillService,
-  budgetService,
+
   heartbeatService,
   issueApprovalService,
   issueService,
@@ -86,7 +86,7 @@ export function agentRoutes(db: Db) {
   const svc = agentService(db);
   const access = accessService(db);
   const approvalsSvc = approvalService(db);
-  const budgets = budgetService(db);
+
   const heartbeat = heartbeatService(db);
   const issueApprovalsSvc = issueApprovalService(db);
   const secretsSvc = secretService(db);
@@ -1476,18 +1476,7 @@ export function agentRoutes(db: Db) {
       req.actor.type === "board" ? (req.actor.userId ?? null) : null,
     );
 
-    if (agent.budgetMonthlyCents > 0) {
-      await budgets.upsertPolicy(
-        companyId,
-        {
-          scopeType: "agent",
-          scopeId: agent.id,
-          amount: agent.budgetMonthlyCents,
-          windowKind: "calendar_month_utc",
-        },
-        actor.actorType === "user" ? actor.actorId : null,
-      );
-    }
+
 
     res.status(201).json(agent);
   });

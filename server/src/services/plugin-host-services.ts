@@ -21,7 +21,7 @@ import { heartbeatService } from "./heartbeat.js";
 import { subscribeCompanyLiveEvents } from "./live-events.js";
 import { randomUUID } from "node:crypto";
 import { activityService } from "./activity.js";
-import { costService } from "./costs.js";
+
 import { assetService } from "./assets.js";
 import { pluginRegistryService } from "./plugin-registry.js";
 import { pluginStateStore } from "./plugin-state-store.js";
@@ -456,7 +456,7 @@ export function buildHostServices(
   const documents = documentService(db);
   const goals = goalService(db);
   const activity = activityService(db);
-  const costs = costService(db);
+
   const assets = assetService(db);
   const scopedBus = eventBus.forPlugin(pluginKey);
 
@@ -688,11 +688,11 @@ export function buildHostServices(
 
     companies: {
       async list(params) {
-        return applyWindow((await companies.list()) as Company[], params);
+        return applyWindow((await companies.list()) as unknown as Company[], params);
       },
       async get(params) {
         await ensurePluginAvailableForCompany(params.companyId);
-        return (await companies.getById(params.companyId)) as Company;
+        return (await companies.getById(params.companyId)) as unknown as Company;
       },
     },
 

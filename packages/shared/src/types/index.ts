@@ -111,14 +111,6 @@ export type {
 export type { Goal } from "./goal.js";
 export type { Approval, ApprovalComment } from "./approval.js";
 export type {
-  BudgetPolicy,
-  BudgetPolicySummary,
-  BudgetIncident,
-  BudgetOverview,
-  BudgetPolicyUpsertInput,
-  BudgetIncidentResolutionInput,
-} from "./budget.js";
-export type {
   SecretProvider,
   SecretVersionSelector,
   EnvPlainBinding,
@@ -140,8 +132,6 @@ export type {
   RoutineExecutionIssueOrigin,
   RoutineListItem,
 } from "./routine.js";
-export type { CostEvent, CostSummary, CostByAgent, CostByProviderModel, CostByBiller, CostByAgentModel, CostWindowSpendRow, CostByProject } from "./cost.js";
-export type { FinanceEvent, FinanceSummary, FinanceByBiller, FinanceByKind } from "./finance.js";
 export type {
   AgentWakeupResponse,
   AgentWakeupSkipped,
@@ -163,7 +153,6 @@ export type {
   JoinRequest,
   InstanceUserRoleGrant,
 } from "./access.js";
-export type { QuotaWindow, ProviderQuotaResult } from "./quota.js";
 export type {
   CompanyPortabilityInclude,
   CompanyPortabilityEnvInput,

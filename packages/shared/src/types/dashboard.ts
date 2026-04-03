@@ -12,16 +12,5 @@ export interface DashboardSummary {
     blocked: number;
     done: number;
   };
-  costs: {
-    monthSpendCents: number;
-    monthBudgetCents: number;
-    monthUtilizationPercent: number;
-  };
   pendingApprovals: number;
-  budgets: {
-    activeIncidents: number;
-    pendingApprovals: number;
-    pausedAgents: number;
-    pausedProjects: number;
-  };
 }
